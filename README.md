@@ -1,26 +1,79 @@
-# Introduction to JavaScript and DOM Manipulation
+/*Introduction to JavaScript and DOM Manipulation Assignment*/
+/*index.html*/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript DOM Example</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1 id="main-heading">Welcome to dynamic page</h1>
+  </header>
 
-## Objectives
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
 
-Write basic JavaScript functions.
-Manipulate the DOM dynamically.
-Respond to user interactions.
+  <main>
+    <section>
+      <p id="text-content">This paragraph will change dynamically.</p>
+      <button onclick="changeText()">Change Text</button>
+      <button onclick="changeStyle()">Change Style</button>
+    </section>
+    <section>
+      <button onclick="addElement()">Add Element</button>
+      <button onclick="removeElement()">Remove Element</button>
+      <div id="dynamic-container"></div>
+    </section>
+  </main>
 
-## Instructions
-
-- Create a script.js file and link it to a HTML.
-- Structure the document using DOCTYPE, html, head, and body.
-
->[!NOTE]
->  - Write JavaScript that:
->  - Changes text content dynamically.
->  - Modifies CSS styles via JavaScript.
->  - Adds or removes an element when a button is clicked.
-
-
-# Tasks
-- Create a well-structured HTML5 document.
-- Use at least 5 different HTML elements.
-- Ensure semantic correctness.
-
-Happy Coding! 💻✨
+  <footer>
+    <p>&copy; 2025 Example Website</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
+/*script.js*/
+function changeText() 
+{
+  const paragraph = document.getElementById('text-content');
+  paragraph.textContent = "The text has been changed using JavaScript!";
+}
+function changeStyle() {
+  const heading = document.getElementById('main-heading');
+  heading.style.color = 'darkblue';
+  heading.style.fontSize = '2.5em';
+  heading.style.backgroundColor = '#f0f8ff';
+  heading.style.padding = '10px';
+}
+function addElement() {
+  const container = document.getElementById('dynamic-container');
+  const newElement = document.createElement('p');
+  newElement.textContent = "This paragraph was added dynamically.";
+  newElement.id = "dynamic-paragraph";
+  container.appendChild(newElement);
+}
+function removeElement() {
+  const element = document.getElementById('dynamic-paragraph');
+  if (element) {
+    element.remove();
+  } else {
+    alert("No dynamic element to remove!");
+  }
+}
+/*styles.css (for better visuals)*/
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+button {
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
